@@ -1,0 +1,9 @@
+{
+  "name": "MegGambles site",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:22",
+  "forwardPorts": [3000],
+  "portsAttributes": {
+    "3000": { "label": "MegGambles site", "onAutoForward": "openBrowser" }
+  },
+  "postAttachCommand": "node server.js"
+}
