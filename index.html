@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MegGambles | Casino · Lifestyle · Community</title>
+<meta name="description" content="MegGambles: live wager leaderboards, daily giveaways, weekly events and a points store. Play under code MEG and join the community.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MegGambles">
+<meta property="og:title" content="MegGambles | Casino · Lifestyle · Community">
+<meta property="og:description" content="Live wager leaderboards, daily giveaways, weekly events and a points store. Play under code MEG.">
+<meta property="og:image" content="/assets/meggambles-og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/meg-favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,500;1,600&family=Montserrat:wght@600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<canvas id="starfield" aria-hidden="true"></canvas>
+<div class="glow glow-1" aria-hidden="true"></div>
+<div class="glow glow-2" aria-hidden="true"></div>
+
+<div class="wrap">
+  <nav class="topnav">
+    <a class="brand" href="https://kick.com/meggambles" target="_blank" rel="noopener">
+      <img src="/assets/meg-avatar.webp" alt="MegGambles">
+      <span class="brand-name">MegGambles</span>
+    </a>
+    <div class="nav-right">
+      <a class="claim-daily" href="#daily" data-action="daily"><svg><use href="#i-gift"/></svg>Claim Daily</a>
+      <div class="socials" id="navSocials"></div>
+      <button class="btn-kick" data-action="login"><svg><use href="#i-kick"/></svg><span>Sign in<span class="long"> with Kick</span></span></button>
+    </div>
+  </nav>
+
+  <div class="cmdbar">
+    <div class="cmd" id="linkbar">
+      <a class="cmd-a" href="/" data-route="home">Home</a>
+      <div class="cmd-dd">
+        <button class="cmd-a" data-route="board" aria-haspopup="true" aria-expanded="false"><svg><use href="#i-trophy"/></svg>Leaderboards<span class="caret"></span></button>
+        <div class="dd-menu" id="ddBoards"></div>
+      </div>
+      <div class="cmd-dd">
+        <button class="cmd-a" aria-haspopup="true" aria-expanded="false"><svg><use href="#i-dice"/></svg>Casinos<span class="caret"></span></button>
+        <div class="dd-menu" id="ddCasinos"></div>
+      </div>
+      <a class="cmd-a" href="/referrals" data-route="referrals"><svg class="heart"><use href="#i-heart"/></svg>Referral Race</a>
+      <a class="cmd-a" href="/#community" data-route="community">Community</a>
+      <a class="cmd-a" href="/store" data-route="store">Shop</a>
+      <a class="cmd-a" href="/winners" data-route="winners">Winners</a>
+      <a class="cmd-a" href="/clip/" data-route="clip">Clip Studio</a>
+    </div>
+  </div>
+
+  <div class="chips" id="activeChips"></div>
+
+  <main id="view"></main>
+
+  <footer class="site-foot">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="foot-logo">MegGambles</div>
+        <div class="foot-tag">Casino <span>♥</span> Lifestyle <span>♥</span> Community</div>
+      </div>
+      <div>
+        <h4>Quick links</h4>
+        <div class="foot-links">
+          <a href="/" data-link>Home</a><a href="/store" data-link>Shop</a>
+          <a href="/#casinos" data-link>Casinos</a><a href="/winners" data-link>Winners</a>
+          <a href="/#community" data-link>Community</a><a href="/clip/?view=Leaderboard">Clip leaderboard</a>
+        </div>
+      </div>
+      <div>
+        <h4>Follow me</h4>
+        <div class="socials" id="footSocials"></div>
+      </div>
+      <div class="foot-age">
+        <div class="age-badge">18+</div>
+        <b>18+ only</b>
+        <span>Play responsibly.</span>
+        <a href="https://www.gambleaware.org" target="_blank" rel="noopener">GambleAware</a>
+      </div>
+    </div>
+    <div class="foot-legal">Powered by <a href="https://wenbot.gg" target="_blank" rel="noopener">WenBot</a> · <a href="#">Privacy</a> · <a href="#">Terms</a></div>
+  </footer>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<!-- Icon sprite -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-kick" viewBox="0 0 24 24"><path fill="currentColor" d="M3 2h6v5h2V5h2V3h2V2h6v7h-2v2h-2v2h2v2h2v7h-6v-1h-2v-2h-2v-2H9v5H3z"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path fill="currentColor" d="M17.8 3h3.1l-6.8 7.7 8 10.3h-6.3l-4.9-6.3L5.3 21H2.2l7.2-8.3L1.8 3h6.4l4.4 5.8zm-1.1 16.2h1.7L7.4 4.7H5.6z"/></symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></g><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></symbol>
+    <symbol id="i-discord" viewBox="0 0 24 24"><path fill="currentColor" d="M19.6 5.3A17 17 0 0 0 15.4 4l-.5 1a15.6 15.6 0 0 0-5.8 0l-.5-1a17 17 0 0 0-4.2 1.3C1.7 9.3 1 13.2 1.3 17a17 17 0 0 0 5.2 2.6l1.1-1.8a11 11 0 0 1-1.7-.8l.4-.3a12.2 12.2 0 0 0 11.4 0l.4.3a11 11 0 0 1-1.7.8l1.1 1.8a17 17 0 0 0 5.2-2.6c.4-4.4-.7-8.3-3.1-11.7zM8.7 14.7c-1 0-1.9-1-1.9-2.1s.8-2.1 1.9-2.1 1.9 1 1.9 2.1-.8 2.1-1.9 2.1zm6.6 0c-1 0-1.9-1-1.9-2.1s.8-2.1 1.9-2.1 1.9 1 1.9 2.1-.8 2.1-1.9 2.1z"/></symbol>
+    <symbol id="i-youtube" viewBox="0 0 24 24"><path fill="currentColor" d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8zM9.7 15.1V8.9l5.8 3.1z"/></symbol>
+      <symbol id="i-gift" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M5 12v8h14v-8M12 8v12M12 8S10.5 3.5 8 4.5 9 8 12 8zm0 0s1.5-4.5 4-3.5S15 8 12 8z"/></g></symbol>
+      <symbol id="i-cal" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4M8 14h2M14 14h2M8 17h2"/></g></symbol>
+      <symbol id="i-people" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.6-3.6 3.2-5.5 6.5-5.5s5.9 1.9 6.5 5.5"/><circle cx="17" cy="9" r="2.5"/><path d="M17 14.5c2.4.2 4 1.7 4.5 4.5"/></g></symbol>
+      <symbol id="i-crown" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l4.5 4L12 5l4.5 7L21 8l-2 10H5z"/><path d="M5 21h14"/></g></symbol>
+      <symbol id="i-trophy" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M7 6H4a3 3 0 0 0 3 4M17 6h3a3 3 0 0 1-3 4M12 14v3M8 20h8l-1-3H9z"/></g></symbol>
+      <symbol id="i-game" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10a5 5 0 0 1 4.6 7l-.9 2.4a2.5 2.5 0 0 1-4.2.7L14.5 15h-5l-2 2.1a2.5 2.5 0 0 1-4.2-.7L2.4 14A5 5 0 0 1 7 7z"/><path d="M7 10v3M5.5 11.5h3M16 11h.01M18 13h.01"/></g></symbol>
+      <symbol id="i-diamond" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4h12l4 5-10 11L2 9z"/><path d="M2 9h20M9 4l3 16 3-16M6 4l3 5M18 4l-3 5"/></g></symbol>
+      <symbol id="i-bag" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1 13H6z"/><path d="M9 10V6a3 3 0 0 1 6 0v4"/></g></symbol>
+      <symbol id="i-dice" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="3"/><circle cx="9" cy="9" r=".6" fill="currentColor"/><circle cx="15" cy="15" r=".6" fill="currentColor"/><circle cx="15" cy="9" r=".6" fill="currentColor"/><circle cx="9" cy="15" r=".6" fill="currentColor"/></g></symbol>
+      <symbol id="i-heart" viewBox="0 0 24 24"><path fill="currentColor" d="M12 21s-7.5-4.6-9.6-9.3C.9 8.2 3 4.5 6.6 4.5c2.2 0 3.6 1.2 4.4 2.5.8-1.3 2.2-2.5 4.4-2.5 3.6 0 5.7 3.7 4.2 7.2C19.5 16.4 12 21 12 21z"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></symbol>
+      <symbol id="i-cart" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2.5l2.2 11h10.6L21 7H6.4"/><circle cx="9" cy="19" r="1.5"/><circle cx="17" cy="19" r="1.5"/></g></symbol>
+  </defs>
+</svg>
+
+<script type="module" src="/js/app.js"></script>
+</body>
+</html>
