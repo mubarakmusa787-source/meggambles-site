@@ -10,6 +10,15 @@ node server.js            # http://localhost:3000, using the data snapshots in .
 LIVE=1 node server.js     # same, but /api/* is proxied to the live site
 ```
 
+## Deploy (static hosting)
+
+The site also runs on static hosts with no server: it falls back to the snapshots in `data/`.
+
+- **Netlify:** drag the folder onto https://app.netlify.com/drop, or connect the GitHub repo. `_redirects` handles routes like `/degen`.
+- **Vercel:** import the GitHub repo, framework preset "Other", no build command. `vercel.json` handles the routes.
+
+Hosted copies show the snapshot data, not live data, until a real backend is connected.
+
 ## Layout
 
 | Path | What it is |

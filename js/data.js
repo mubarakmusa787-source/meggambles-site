@@ -6,19 +6,26 @@ import { CHANNEL } from './content.js';
 
 const cache = new Map();
 
-async function getJSON(path) {
-  if (!cache.has(path)) {
-    cache.set(path, fetch(path, { headers: { Accept: 'application/json' } }).then(r => {
-      if (!r.ok) throw new Error(`${path}: ${r.status}`);
-      return r.json();
-    }).catch(e => { cache.delete(path); throw e; }));
-  }
-  return cache.get(path);
+async function fetchJSON(path) {
+  const r = await fetch(path, { headers: { Accept: 'application/json' } });
+  if (!r.ok || !(r.headers.get('content-type') || '').includes('json')) throw new Error(`${path}: ${r.status}`);
+  return r.json();
 }
 
-export const getPortal = () => getJSON(`/api/portal-data?channel=${CHANNEL}`);
-export const getRaffleEntries = () => getJSON(`/api/raffle-entries?channel=${CHANNEL}`);
-export const getReferrals = () => getJSON(`/api/meg-referrals?channel=${CHANNEL}`);
+// Try the API first (server.js, or a real backend later). On a static host
+// (Netlify, Vercel) there is no API, so fall back to the snapshot in /data.
+function getJSON(apiPath, snapshot) {
+  if (!cache.has(apiPath)) {
+    cache.set(apiPath, fetchJSON(apiPath)
+      .catch(() => fetchJSON(snapshot))
+      .catch(e => { cache.delete(apiPath); throw e; }));
+  }
+  return cache.get(apiPath);
+}
+
+export const getPortal = () => getJSON(`/api/portal-data?channel=${CHANNEL}`, '/data/portal-data.json');
+export const getRaffleEntries = () => getJSON(`/api/raffle-entries?channel=${CHANNEL}`, '/data/raffle-entries.json');
+export const getReferrals = () => getJSON(`/api/meg-referrals?channel=${CHANNEL}`, '/data/referrals.json');
 
 // One shape for every casino board, whichever field the API used.
 export function boardsByKey(portal) {
